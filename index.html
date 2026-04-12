@@ -44,12 +44,14 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto}
   .logo{display:flex;align-items:center;gap:10px}
-  .logo img{height:56px;width:auto;display:block;mix-blend-mode:multiply}
+  .logo img{
+    height:54px;width:auto;display:block;
+    transition:transform .3s;
+  }
+  .logo:hover img{transform:scale(1.05)}
   .footer-logo{display:flex;justify-content:center;margin-bottom:18px}
   .footer-logo img{
-    height:90px;width:auto;display:block;
-    background:#C3E3C4;padding:10px;border-radius:20px;
-    box-shadow:0 8px 24px -12px rgba(31,88,54,0.3);
+    height:100px;width:auto;display:block;
   }
   .nav-links{display:flex;gap:36px;font-size:14px}
   .nav-links a{color:var(--ink-soft);transition:color .2s}
@@ -344,7 +346,7 @@
  
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><img src="assets/logo.png" alt="Terapie Adam"></a>
+    <a href="#" class="logo"><img src="assets/logo.svg" alt="Terapie Adam"></a>
     <div class="nav-links">
       <a href="#o-mne">O mně</a>
       <a href="#sluzby">Služby</a>
@@ -635,7 +637,7 @@
  
 <footer>
   <div class="wrap">
-    <div class="footer-logo"><img src="assets/logo.png" alt="Terapie Adam"></div>
+    <div class="footer-logo"><img src="assets/logo.svg" alt="Terapie Adam"></div>
     <p>© 2026 Iveta — Terapie ADAM · Členka České asociace pro psychoterapii</p>
   </div>
 </footer>
