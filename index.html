@@ -131,21 +131,34 @@
 
   .hero-visual{
     aspect-ratio:4/5;border-radius:200px 200px 24px 24px;
-    background:linear-gradient(160deg,#7fb88f 0%,#1f5836 100%);
+    background:linear-gradient(160deg,#a8d4b4 0%,#2f7a4f 55%,#1a3d28 100%);
     position:relative;overflow:hidden;
-    box-shadow:0 30px 80px -30px rgba(31,88,54,0.4);
+    box-shadow:0 30px 80px -30px rgba(31,88,54,0.45);
+    display:flex;align-items:center;justify-content:center;
   }
-  /* Pokud existuje foto (assets/foto-iveta.jpg), zobrazí se zde automaticky */
-  .hero-visual img.hero-photo{
-    position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;object-position:center top;display:block;
+  /* Dekorativní kruhy na pozadí */
+  .hero-visual::before{
+    content:"";position:absolute;
+    width:85%;aspect-ratio:1;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.12);
+    top:50%;left:50%;transform:translate(-50%,-50%);
   }
   .hero-visual::after{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.18),transparent 50%);
-    pointer-events:none;
+    content:"";position:absolute;
+    width:110%;aspect-ratio:1;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.07);
+    top:50%;left:50%;transform:translate(-50%,-50%);
   }
-  .hero-visual svg{position:absolute;bottom:0;left:0;width:100%;opacity:0.35;z-index:1}
+  .hero-logo-wrap{
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    width:72%;
+    filter:drop-shadow(0 8px 32px rgba(0,0,0,0.22));
+    animation:fadeUp 1.2s ease forwards;
+  }
+  .hero-logo-wrap img{width:100%;height:auto;display:block}
+  /* Světlá vlnka dole */
+  .hero-visual-wave{position:absolute;bottom:0;left:0;width:100%;z-index:3;opacity:0.3}
 
   .blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
   .blob1{width:400px;height:400px;background:#2f7a4f;opacity:0.15;top:-100px;right:-100px}
@@ -442,11 +455,11 @@
       </div>
     </div>
     <div class="hero-visual">
-      <!-- Profilovka: vložte soubor assets/foto-iveta.jpg — zobrazí se automaticky -->
-      <img src="assets/foto-iveta.jpg" alt="Iveta Adam — psychoterapeutka"
-           class="hero-photo"
-           onerror="this.style.display='none'">
-      <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+      <div class="hero-logo-wrap">
+        <img src="assets/logo.svg" alt="Terapie ADAM"
+             onerror="this.src='assets/logo.png'">
+      </div>
+      <svg class="hero-visual-wave" viewBox="0 0 400 200" preserveAspectRatio="none">
         <path d="M0,150 Q100,80 200,130 T400,100 L400,200 L0,200 Z" fill="#fff"/>
       </svg>
     </div>
