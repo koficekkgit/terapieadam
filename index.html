@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terapie ADAM — Iveta | Psychoterapie a psychosociální poradenství · Ostrava & online</title>
-<!-- Favicon — tmavý režim -->
+<!-- Favicon světlý režim (výchozí) -->
+<link rel="icon" href="assets/favicon-light.png">
+<!-- Favicon tmavý režim — přepíše výchozí pokud OS používá dark mode -->
 <link rel="icon" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
-<!-- Favicon — světlý režim (doplnit soubor) -->
-<link rel="icon" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
-<!-- Fallback pro starší prohlížeče -->
-<link rel="icon" href="assets/favicon-dark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -174,8 +172,8 @@
     box-shadow:0 20px 60px -20px rgba(0,0,0,0.2);
   }
   @media(max-width:880px){
-    .portrait{position:static;top:auto;aspect-ratio:1/1;max-height:none}
-    .portrait img{object-position:center 15%}
+    .portrait{position:static;top:auto;aspect-ratio:3/4;max-height:none}
+    .portrait img{object-position:center 10%}
   }
   .portrait img{
     width:100%;height:100%;
@@ -216,7 +214,41 @@
   .reviews-block{padding-top:28px;border-top:1px solid var(--line)}
   .reviews-block h3{font-size:20px;margin-bottom:10px}
   .reviews-block p{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
-  .review-links{display:flex;gap:14px;flex-wrap:wrap}
+  .review-links{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+  /* Mapy.com badge */
+  .mapy-badge{
+    display:inline-flex;flex-direction:column;align-items:center;
+    background:#3dba4e;border-radius:16px;overflow:hidden;
+    text-decoration:none;
+    box-shadow:0 8px 24px -8px rgba(61,186,78,0.45);
+    transition:transform .2s, box-shadow .2s;
+    flex-shrink:0;width:110px;
+  }
+  .mapy-badge:hover{transform:translateY(-3px);box-shadow:0 14px 30px -8px rgba(61,186,78,0.55)}
+  .mapy-badge-top{
+    width:100%;padding:12px 10px 8px;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+  }
+  .mapy-badge-stars{color:#fff;font-size:11px;letter-spacing:3px}
+  .mapy-badge-year{color:rgba(255,255,255,0.85);font-size:10px;letter-spacing:0.08em}
+  .mapy-badge-score{
+    font-size:38px;font-weight:800;color:#fff;line-height:1;
+    font-family:'Inter',sans-serif;letter-spacing:-1px;
+  }
+  .mapy-badge-label{
+    font-size:9px;font-weight:700;color:#fff;
+    letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .mapy-badge-bottom{
+    width:100%;background:#fff;
+    padding:6px 10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .mapy-badge-bottom span{
+    font-size:15px;font-weight:900;
+    color:#e8000d;font-family:'Inter',sans-serif;letter-spacing:0.02em;
+  }
+  .mapy-badge-bottom span em{color:#1a1a1a;font-style:normal}
   .review-link{
     display:inline-flex;align-items:center;gap:8px;
     padding:11px 22px;border-radius:999px;
@@ -509,12 +541,29 @@
             <h3>Recenze a hodnocení mé práce od klientů</h3>
             <p>Pokud jste byli s mými službami a přístupem spokojeni, ráda si přečtu Vaše hodnocení mé práce pro Vás.</p>
             <div class="review-links">
-              <a href="https://www.firmy.cz/detail/13519184" target="_blank" rel="noopener" class="review-link">
-                Recenze na Firmy.cz →
+              <!-- Mapy.com badge -->
+              <a href="https://mapy.com/zakladni?q=Terapie+Adam+Ostrava&source=firm&id=13519184" target="_blank" rel="noopener" class="mapy-badge" title="Mapy.com — Hodnocení zákazníků 2025">
+                <div class="mapy-badge-top">
+                  <span class="mapy-badge-stars">★ ★ ★ ★ ★</span>
+                  <span class="mapy-badge-year">2025</span>
+                  <span class="mapy-badge-score">5,0</span>
+                  <span class="mapy-badge-label">Fantastické</span>
+                </div>
+                <div class="mapy-badge-bottom">
+                  <span>M<em>APY.COM</em></span>
+                </div>
               </a>
-              <a href="https://www.google.com/search?sa=X&sca_esv=9735f8b237bb4fc8&biw=1272&bih=635&q=Terapie+Adam+-+PhDr.+Mgr.+Bc.+Iveta+ADAM+psychoterapie+a+psychosoci%C3%A1ln%C3%AD+poradenstv%C3%AD+Recenze&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MTQ0NDMwMDM3NDEzsTA2szQw2sDI-IoxLiS1KLEgM1XBMSUxV0FXISDDpUhPwTcdSDgl6yl4lqWWJCo4ujj6KhQUVyZn5JdAlSdC-cX5yZmHF-bkHV6rUJBflJiSmldcUgbkBKUmp-ZVpS5ipbEFAAevClbcAAAA&rldimm=4111600671464836902&tbm=lcl&hl=cs-CZ&ved=2ahUKEwioo-eitu6TAxV5LRAIHa0NA4MQ9fQKegQIORAG#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="review-link">
-                Recenze na Google →
-              </a>
+              <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+                <a href="https://www.firmy.cz/detail/13519184" target="_blank" rel="noopener" class="review-link">
+                  Recenze na Firmy.cz →
+                </a>
+                <a href="https://www.google.com/search?sa=X&sca_esv=9735f8b237bb4fc8&biw=1272&bih=635&q=Terapie+Adam+-+PhDr.+Mgr.+Bc.+Iveta+ADAM+psychoterapie+a+psychosoci%C3%A1ln%C3%AD+poradenstv%C3%AD+Recenze&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MTQ0NDMwMDM3NDEzsTA2szQw2sDI-IoxLiS1KLEgM1XBMSUxV0FXISDDpUhPwTcdSDgl6yl4lqWWJCo4ujj6KhQUVyZn5JdAlSdC-cX5yZmHF-bkHV6rUJBflJiSmldcUgbkBKUmp-ZVpS5ipbEFAAevClbcAAAA&rldimm=4111600671464836902&tbm=lcl&hl=cs-CZ&ved=2ahUKEwioo-eitu6TAxV5LRAIHa0NA4MQ9fQKegQIORAG#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="review-link">
+                  Recenze na Google →
+                </a>
+                <a href="https://www.firmy.cz/detail/13519184" target="_blank" rel="noopener" class="review-link">
+                  Recenze na Mapy.com →
+                </a>
+              </div>
             </div>
           </div>
         </div>
