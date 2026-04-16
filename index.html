@@ -226,19 +226,20 @@
     transition:transform .3s, box-shadow .3s;
   }
   .price-card.featured{
-    background:var(--ink);color:var(--bg);border-color:var(--ink);
+    background:#1a3d28;color:#f0f7ec;border-color:#1a3d28;
     transform:scale(1.03);
+    box-shadow:0 24px 60px -16px rgba(26,61,40,0.55);
   }
-  .price-card.featured .price-name{color:#2f7a4f}
-  .price-card.featured .price-desc,.price-card.featured .price-features li{color:#a8b59a}
-  .price-card.featured .price-features li::before{color:#2f7a4f}
+  .price-card.featured .price-name{color:#7ee8a2;letter-spacing:0.08em}
+  .price-card.featured .price-desc,.price-card.featured .price-features li{color:#c2ddb0}
+  .price-card.featured .price-features li::before{color:#7ee8a2}
   .price-card:hover{transform:translateY(-6px)}
   .price-card.featured:hover{transform:scale(1.03) translateY(-6px)}
   .price-badge{
     position:absolute;top:-12px;left:34px;
-    background:var(--accent);color:var(--bg);
+    background:#7ee8a2;color:#1a3d28;
     font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
-    padding:6px 14px;border-radius:999px;
+    padding:6px 14px;border-radius:999px;font-weight:600;
   }
   .price-name{
     font-family:'Fraunces',serif;font-size:14px;font-style:italic;
@@ -249,7 +250,7 @@
     font-size:14px;color:var(--ink-soft);
     margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--line);
   }
-  .price-card.featured .price-desc{border-color:#3d4f2c}
+  .price-card.featured .price-desc{border-color:#2e5c3a}
   .price-features{list-style:none}
   .price-features li{font-size:14px;padding:8px 0 8px 22px;position:relative;color:var(--ink-soft)}
   .price-features li::before{content:"→";position:absolute;left:0;color:var(--accent)}
@@ -257,19 +258,19 @@
     display:flex;justify-content:space-between;align-items:baseline;
     padding:12px 0;border-bottom:1px dashed var(--line);
   }
-  .price-card.featured .price-time-row{border-color:#3d4f2c}
+  .price-card.featured .price-time-row{border-color:#2e5c3a}
   .price-time-row:last-child{border-bottom:none}
   .price-time-label{font-size:14px;color:var(--ink-soft);font-family:'Inter',sans-serif}
-  .price-card.featured .price-time-label{color:#a8b59a}
+  .price-card.featured .price-time-label{color:#c2ddb0}
   .price-time-amount{font-family:'Fraunces',serif;font-size:20px;color:var(--ink)}
-  .price-card.featured .price-time-amount{color:var(--bg)}
+  .price-card.featured .price-time-amount{color:#f0f7ec}
   .price-time-amount span{font-size:13px;color:var(--ink-soft);font-style:italic;margin-left:2px}
-  .price-card.featured .price-time-amount span{color:#a8b59a}
+  .price-card.featured .price-time-amount span{color:#9ecfb0}
   .price-meta{
     font-size:13px;color:var(--ink-soft);font-style:italic;
     margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
   }
-  .price-card.featured .price-meta{border-color:#3d4f2c;color:#a8b59a}
+  .price-card.featured .price-meta{border-color:#2e5c3a;color:#9ecfb0}
   .pricing-disclaimer{
     max-width:780px;margin:0 auto 60px;text-align:center;
     font-size:14px;color:var(--ink-soft);font-style:italic;
@@ -367,7 +368,6 @@
       <a href="#sluzby">Služby</a>
       <a href="#cenik">Ceník</a>
       <a href="#faq">Časté dotazy</a>
-      <a href="#kontakt">Objednání</a>
     </div>
     <a href="#kontakt" class="nav-cta">Objednat se</a>
   </div>
