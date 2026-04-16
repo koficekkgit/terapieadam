@@ -3,7 +3,8 @@
     "allow": [
       "Bash(dir /c/Users/kofic/Desktop/terapie-adam-web)",
       "Bash(python3 -c \"import os; [print\\(f\\) for f in os.walk\\('.'\\)]\")",
-      "Bash(npx --version)"
+      "Bash(npx --version)",
+      "Bash(gh auth:*)"
     ]
   }
 }
