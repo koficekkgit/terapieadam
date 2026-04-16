@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terapie ADAM — Iveta | Psychoterapie a psychosociální poradenství · Ostrava & online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#e8f0d9;
+    --bg-warm:#dde8c8;
+    --bg-soft:#f1f6e6;
+    --ink:#2c3a1f;
+    --ink-soft:#5a6b48;
+    --accent:#2f7a4f;
+    --accent-deep:#1f5836;
+    --accent-light:#7fb88f;
+    --gray:#7a8579;
+    --line:#c5d4a8;
+    --card:#f1f6e6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(245,241,234,0.85);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo img{height:54px;width:auto;display:block;transition:transform .3s}
+  .logo:hover img{transform:scale(1.05)}
+  .footer-logo{display:flex;justify-content:center;margin-bottom:18px}
+  .footer-logo img{height:100px;width:auto;display:block}
+  .nav-links{display:flex;gap:36px;font-size:14px}
+  .nav-links a{color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-cta{
+    background:var(--ink);color:var(--bg);
+    padding:10px 20px;border-radius:999px;font-size:14px;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--accent)}
+  @media(max-width:780px){.nav-links{display:none}}
+
+  /* HERO */
+  header.hero{
+    padding:160px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:50px}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--accent-deep);margin-bottom:28px;
+  }
+  .eyebrow::before{content:"";width:32px;height:1px;background:var(--accent-deep)}
+  h1.hero-title{font-size:clamp(44px,6.5vw,82px);margin-bottom:32px}
+  h1.hero-title em{font-style:italic;color:var(--accent)}
+  .hero-text{font-size:18px;color:var(--ink-soft);max-width:520px;margin-bottom:40px}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    padding:16px 30px;border-radius:999px;font-size:15px;
+    transition:transform .2s, background .2s;display:inline-block;
+  }
+  .btn-primary{background:var(--ink);color:var(--bg)}
+  .btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+  .hero-visual{
+    aspect-ratio:4/5;border-radius:200px 200px 24px 24px;
+    background:linear-gradient(160deg,#7fb88f 0%,#1f5836 100%);
+    position:relative;overflow:hidden;
+    box-shadow:0 30px 80px -30px rgba(31,88,54,0.4);
+  }
+  /* Pokud existuje foto (assets/foto-iveta.jpg), zobrazí se zde automaticky */
+  .hero-visual img.hero-photo{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center top;display:block;
+  }
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.18),transparent 50%);
+    pointer-events:none;
+  }
+  .hero-visual svg{position:absolute;bottom:0;left:0;width:100%;opacity:0.35;z-index:1}
+
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+  .blob1{width:400px;height:400px;background:#2f7a4f;opacity:0.15;top:-100px;right:-100px}
+  .blob2{width:500px;height:500px;background:#7fb88f;opacity:0.25;bottom:-200px;left:-200px}
+
+  /* SECTIONS */
+  section{padding:110px 0;position:relative}
+  .section-eyebrow{
+    font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:18px;display:block;
+  }
+  h2.section-title{font-size:clamp(34px,4.5vw,56px);margin-bottom:24px;max-width:780px}
+  h2.section-title em{font-style:italic;color:var(--accent-deep)}
+  .section-lead{font-size:18px;color:var(--ink-soft);max-width:640px;margin-bottom:60px}
+
+  /* CO JE TERAPIE */
+  .terapie-info{background:var(--bg-soft);padding:80px 0}
+  .terapie-info .section-eyebrow{color:var(--accent)}
+  .terapie-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:20px}
+  @media(max-width:780px){.terapie-info-grid{grid-template-columns:1fr}}
+  .terapie-info-grid p{font-size:16px;color:var(--ink-soft);line-height:1.75}
+
+  /* O MNĚ */
+  .about{background:var(--bg-warm)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;align-items:start}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr}}
+  .portrait{
+    aspect-ratio:3/4;border-radius:24px;
+    background:linear-gradient(145deg,#7fb88f,#1f5836);
+    position:sticky;top:120px;
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,0.2);
+  }
+  @media(max-width:880px){
+    .portrait{position:static;top:auto;aspect-ratio:4/3;max-height:320px}
+  }
+  .portrait img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center top;
+    display:block;
+  }
+  .about p{margin-bottom:20px;font-size:16px;color:var(--ink-soft)}
+  .about p strong{color:var(--ink);font-weight:500}
+
+  /* Inline textové linky */
+  .text-link{
+    color:var(--accent-deep);
+    text-decoration:underline;
+    text-decoration-color:rgba(31,88,54,0.4);
+    text-underline-offset:3px;
+    transition:color .2s;
+  }
+  .text-link:hover{color:var(--accent)}
+
+  .credentials{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
+  .credentials h3{font-size:20px;margin-bottom:18px}
+  .credentials ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+  @media(max-width:600px){.credentials ul{grid-template-columns:1fr}}
+  .credentials li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative}
+  .credentials li::before{content:"◆";position:absolute;left:0;color:var(--accent);font-size:8px;top:7px}
+
+  /* Kvalita a recenze */
+  .quality-block{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
+  .quality-block h3{font-size:20px;margin-bottom:16px}
+  .quality-list{list-style:none;margin:0 0 28px}
+  .quality-list li{
+    font-size:15px;color:var(--ink-soft);
+    padding:10px 0 10px 26px;position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .quality-list li:last-child{border-bottom:none}
+  .quality-list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+  .reviews-block{padding-top:28px;border-top:1px solid var(--line)}
+  .reviews-block h3{font-size:20px;margin-bottom:10px}
+  .reviews-block p{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+  .review-links{display:flex;gap:14px;flex-wrap:wrap}
+  .review-link{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;
+    background:rgba(47,122,79,0.08);border:1px solid var(--line);
+    color:var(--accent-deep);font-size:14px;font-weight:500;
+    transition:background .2s, transform .2s;
+  }
+  .review-link:hover{background:rgba(47,122,79,0.18);transform:translateY(-2px)}
+
+  /* SLUŽBY */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:880px){.services-grid{grid-template-columns:1fr}}
+  .service{
+    background:var(--card);padding:42px 34px;border-radius:24px;
+    border:1px solid var(--line);transition:transform .3s, box-shadow .3s;
+    position:relative;overflow:hidden;
+  }
+  .service:hover{transform:translateY(-6px);box-shadow:0 20px 50px -20px rgba(79,94,54,0.25)}
+  .service-num{
+    font-family:'Fraunces',serif;font-size:14px;font-style:italic;
+    color:var(--accent);margin-bottom:18px;display:block;
+  }
+  .service h3{font-size:24px;margin-bottom:14px}
+  .service p{font-size:15px;color:var(--ink-soft)}
+
+  /* PŘÍSTUP */
+  .approach{background:#f5f0e1;color:var(--ink)}
+  .approach .section-eyebrow{color:var(--accent)}
+  .approach h2{color:var(--ink)}
+  .approach h2 em{color:var(--accent-deep)}
+  .approach .section-lead{color:var(--ink-soft)}
+  .approach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:50px;margin-top:30px}
+  @media(max-width:780px){.approach-grid{grid-template-columns:1fr}}
+  .approach-item{padding-top:30px;border-top:1px solid #d8cfa8}
+  .approach-item h3{font-size:26px;margin-bottom:14px;color:var(--ink)}
+  .approach-item p{font-size:15px;color:var(--ink-soft)}
+
+  /* CENÍK */
+  .pricing{background:var(--bg-warm)}
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:880px){.pricing-grid{grid-template-columns:1fr}}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:24px;padding:42px 34px;position:relative;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .price-card.featured{
+    background:var(--ink);color:var(--bg);border-color:var(--ink);
+    transform:scale(1.03);
+  }
+  .price-card.featured .price-name{color:#2f7a4f}
+  .price-card.featured .price-desc,.price-card.featured .price-features li{color:#a8b59a}
+  .price-card.featured .price-features li::before{color:#2f7a4f}
+  .price-card:hover{transform:translateY(-6px)}
+  .price-card.featured:hover{transform:scale(1.03) translateY(-6px)}
+  .price-badge{
+    position:absolute;top:-12px;left:34px;
+    background:var(--accent);color:var(--bg);
+    font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;
+  }
+  .price-name{
+    font-family:'Fraunces',serif;font-size:14px;font-style:italic;
+    color:var(--accent);margin-bottom:14px;display:block;
+    letter-spacing:0.05em;text-transform:uppercase;
+  }
+  .price-desc{
+    font-size:14px;color:var(--ink-soft);
+    margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--line);
+  }
+  .price-card.featured .price-desc{border-color:#3d4f2c}
+  .price-features{list-style:none}
+  .price-features li{font-size:14px;padding:8px 0 8px 22px;position:relative;color:var(--ink-soft)}
+  .price-features li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+  .price-time-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:12px 0;border-bottom:1px dashed var(--line);
+  }
+  .price-card.featured .price-time-row{border-color:#3d4f2c}
+  .price-time-row:last-child{border-bottom:none}
+  .price-time-label{font-size:14px;color:var(--ink-soft);font-family:'Inter',sans-serif}
+  .price-card.featured .price-time-label{color:#a8b59a}
+  .price-time-amount{font-family:'Fraunces',serif;font-size:20px;color:var(--ink)}
+  .price-card.featured .price-time-amount{color:var(--bg)}
+  .price-time-amount span{font-size:13px;color:var(--ink-soft);font-style:italic;margin-left:2px}
+  .price-card.featured .price-time-amount span{color:#a8b59a}
+  .price-meta{
+    font-size:13px;color:var(--ink-soft);font-style:italic;
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+  }
+  .price-card.featured .price-meta{border-color:#3d4f2c;color:#a8b59a}
+  .pricing-disclaimer{
+    max-width:780px;margin:0 auto 60px;text-align:center;
+    font-size:14px;color:var(--ink-soft);font-style:italic;
+    padding:24px 30px;background:rgba(255,255,255,0.4);
+    border-radius:16px;border:1px solid var(--line);
+  }
+  .price-note{text-align:center;margin-top:40px;font-size:14px;color:var(--ink-soft);font-style:italic}
+
+  /* FAQ */
+  .faq-list{max-width:820px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line);padding:4px 0}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:26px 50px 26px 0;
+    font-family:'Fraunces',serif;font-size:22px;
+    position:relative;transition:color .2s;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:var(--accent)}
+  .faq-item summary::after{
+    content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
+    font-size:28px;font-family:'Inter',sans-serif;color:var(--accent);
+    transition:transform .3s;font-weight:300;
+  }
+  .faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+  .faq-item[open] summary{color:var(--accent)}
+  .faq-answer{padding:0 50px 28px 0;color:var(--ink-soft);font-size:16px}
+
+  /* OBJEDNÁNÍ */
+  .booking{background:#f5f0e1;color:var(--ink)}
+  .booking .section-eyebrow{color:var(--accent)}
+  .booking h2{color:var(--ink)}
+  .booking h2 em{color:var(--accent-deep)}
+  .booking .section-lead{color:var(--ink-soft)}
+  .booking-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+  @media(max-width:880px){.booking-grid{grid-template-columns:1fr}}
+  .booking-info h3{font-family:'Fraunces',serif;font-size:26px;margin-bottom:20px;color:var(--ink)}
+  .booking-steps{list-style:none;counter-reset:step}
+  .booking-steps li{
+    counter-increment:step;padding:18px 0 18px 56px;position:relative;
+    color:var(--ink-soft);font-size:15px;border-bottom:1px solid #d8cfa8;
+  }
+  .booking-steps li::before{
+    content:counter(step,decimal-leading-zero);
+    position:absolute;left:0;top:18px;
+    font-family:'Fraunces',serif;font-size:18px;color:var(--accent);
+    font-style:italic;
+  }
+  .booking-steps li strong{color:var(--ink);font-weight:500;display:block;margin-bottom:4px}
+  .room-photo{
+    margin-top:32px;border-radius:20px;overflow:hidden;
+    box-shadow:0 12px 36px -12px rgba(44,58,31,0.22);
+    position:relative;
+  }
+  .room-photo img{width:100%;display:block;object-fit:cover;max-height:260px}
+  .room-photo-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:10px 18px;
+    background:linear-gradient(transparent,rgba(31,58,31,0.72));
+    color:#e8f0d9;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+  }
+  .booking-form{
+    background:#fbf7ea;padding:20px;border-radius:24px;
+    border:1px solid #e0d6b8;
+    box-shadow:0 20px 50px -20px rgba(44,58,31,0.15);
+    overflow:hidden;
+  }
+  .booking-note{
+    font-size:13px;color:var(--ink-soft);font-style:italic;
+    padding:12px 18px;background:rgba(47,122,79,0.07);
+    border-radius:12px;border:1px solid var(--line);
+    margin-bottom:16px;line-height:1.6;
+  }
+
+  /* KONTAKT */
+  .contact-info-bottom{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:880px){.contact-info-bottom{grid-template-columns:repeat(2,1fr) !important}}
+  @media(max-width:520px){.contact-info-bottom{grid-template-columns:1fr !important}}
+
+  /* FOOTER */
+  footer{padding:50px 0 40px;border-top:1px solid var(--line);text-align:center}
+  footer p{font-size:13px;color:var(--ink-soft)}
+
+  /* Anim */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  header.hero > * {animation:fadeUp 1s ease forwards}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="assets/logo.svg" alt="Terapie Adam"></a>
+    <div class="nav-links">
+      <a href="#o-mne">O mně</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#faq">Časté dotazy</a>
+      <a href="#kontakt">Objednání</a>
+    </div>
+    <a href="#kontakt" class="nav-cta">Objednat se</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Psychoterapie a psychosociální poradenství · Ostrava & online</span>
+      <h1 class="hero-title">Bezpečný prostor<br>pro <em>Vás</em>.</h1>
+      <p class="hero-text">Jsem Iveta — terapeutka pracující v systému individuální psychologie — Adlerovském přístupu a s modelem CARe — komplexním přístupu psychosociální rehabilitace. Pracuji také s transgeneračními přenosy vzorců a témat v rodových liniích. Jsem s Vámi, pro Vás, v klidu, beze spěchu, bez soudů.</p>
+      <div class="btn-row">
+        <a href="#kontakt" class="btn btn-primary">Domluvit konzultaci</a>
+        <a href="#o-mne" class="btn btn-ghost">Poznat mě blíž</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Profilovka: vložte soubor assets/foto-iveta.jpg — zobrazí se automaticky -->
+      <img src="assets/foto-iveta.jpg" alt="Iveta Adam — psychoterapeutka"
+           class="hero-photo"
+           onerror="this.style.display='none'">
+      <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+        <path d="M0,150 Q100,80 200,130 T400,100 L400,200 L0,200 Z" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- PSYCHOTERAPIE BEZ OBAV -->
+<section id="terapie" class="terapie-info">
+  <div class="wrap">
+    <span class="section-eyebrow">Psychoterapie bez obav a předsudků</span>
+    <h2 class="section-title">Co psychoterapie <em>je a co vám může dát.</em></h2>
+    <div class="terapie-info-grid">
+      <p>Psychoterapie je odborná pomoc, která využívá psychologické prostředky k pomoci nacházet řešení v obtížných situacích, které jsou zdánlivě bez východiska. Nabízí porozumění tomu, co se mi děje. Pomáhá zpracovávat emoční bolesti.</p>
+      <p>Obecně se dá říct, že terapie Vám umožní zažít určitou úlevu již během jednoho či dvou sezení — obvykle je to úleva z toho, že jste měli možnost svěřit se někomu, kdo Vám skutečně naslouchal. K dosažení trvalejšího výsledku bývá zapotřebí delší práce. Záleží na tom, s jak závažnou problematikou přicházíte. Bez motivace a touhy po změně je těžké nějaké změny dosáhnout.</p>
+    </div>
+  </div>
+</section>
+
+<section id="o-mne" class="about">
+  <div class="wrap">
+    <span class="section-eyebrow">O mně</span>
+    <h2 class="section-title">Vystudovaná psychoterapeutka <em>s praxí.</em></h2>
+    <div class="about-grid">
+      <div class="portrait">
+        <!-- Foto: vložte soubor assets/foto-iveta.jpg — zobrazí se automaticky -->
+        <img src="assets/foto-iveta.jpg" alt="Iveta Adam — psychoterapeutka"
+             onerror="this.style.display='none'">
+      </div>
+      <div>
+        <p>Vystudovala jsem úspěšně sociální psychologii a sociální práci se zaměřením na komunikaci a aplikovanou psychoterapii na <a href="https://www.pvsps.cz/" target="_blank" rel="noopener" class="text-link">Pražské vysoké škole psychosociálních studií</a> a <a href="https://www.vsdanubius.sk/" target="_blank" rel="noopener" class="text-link">Vysoké škole Danubius</a>, a před tím také specializaci v pedagogice na <a href="https://www.ujak.cz/" target="_blank" rel="noopener" class="text-link">Univerzitě Jana Amose Komenského Praha</a>. Pravidelně se dále vzdělávám v akreditovaných kurzech a výcvicích a využívám supervizi.</p>
+
+        <p>Mimo svou soukromou praxi v oboru rovněž působím jako externí lektorka na <a href="https://fss.osu.cz/kas/iveta-adam/88961/" target="_blank" rel="noopener" class="text-link">Katedře zdravotně-sociálních studií Fakulty sociálních studií Ostravské univerzity</a>, jako terapeutka v <a href="http://www.krystalhelp.cz/www/page/adiktologicka-ambulance" target="_blank" rel="noopener" class="text-link">Adiktologické ambulanci ADAM</a> na Poliklinice v Krnově pro ústav <a href="http://www.krystalhelp.cz/" target="_blank" rel="noopener" class="text-link">Krystal Help, z.ú.</a> a spolupracuji rovněž jako terapeutka s organizací pro podporu náhradní rodinné péče <a href="https://dobrarodina.cz/" target="_blank" rel="noopener" class="text-link">Dobrá rodina o.p.s.</a></p>
+
+        <p>Jsem členkou <strong>České asociace pro psychoterapii</strong> — společnosti zodpovědných psychoterapeutek a psychoterapeutů splňujících kvalifikační a etické podmínky kontinuálního vzdělávání a supervize.</p>
+
+        <div class="credentials">
+          <h3>Akreditované výcviky a vzdělávací programy</h3>
+          <ul>
+            <li>Komplexní psychoterapeutický výcvik — Perspektivou individuální psychologie (PIP)</li>
+            <li>Individuální psychologie — Adlerovský přístup</li>
+            <li>Edukativní rodičovská terapie</li>
+            <li>Práce s traumatem a krizová intervence</li>
+            <li>Práce s rodinami osob s duševním onemocněním v sociálních službách</li>
+            <li>Sociální práce s rodinou, metody pro sanaci, aktivizaci a podporu</li>
+            <li>KBT a strach v sociálních situacích</li>
+            <li>Logoterapie</li>
+            <li>Model CARe — komplexní přístup v psychosociální rehabilitaci</li>
+            <li>Komunikace s klienty užívajícími návykové látky</li>
+            <li>Transgenerační vzorce</li>
+            <li>Autogenní trénink</li>
+            <li>Zvládání stresu pomocí relaxačních technik</li>
+            <li>Základy koučování</li>
+          </ul>
+        </div>
+
+        <div class="quality-block">
+          <h3>Kvalitu poskytovaných služeb garantuji</h3>
+          <ul class="quality-list">
+            <li>odborným vzděláním</li>
+            <li>členstvím v <strong>České asociaci pro psychoterapii</strong> — společnosti zodpovědných psychoterapeutek a psychoterapeutů splňujících kvalifikační a etické podmínky kontinuálního vzdělávání a supervize</li>
+            <li>dalším kontinuálním vzděláváním</li>
+            <li>využíváním aplikace <strong>DeePsy</strong> pro sledování procesu výsledného efektu psychoterapie</li>
+          </ul>
+
+          <div class="reviews-block">
+            <h3>Recenze a hodnocení mé práce od klientů</h3>
+            <p>Pokud jste byli s mými službami a přístupem spokojeni, ráda si přečtu Vaše hodnocení mé práce pro Vás.</p>
+            <div class="review-links">
+              <a href="https://www.firmy.cz/detail/13519184" target="_blank" rel="noopener" class="review-link">
+                Recenze na Firmy.cz →
+              </a>
+              <a href="https://www.google.com/search?sa=X&sca_esv=9735f8b237bb4fc8&biw=1272&bih=635&q=Terapie+Adam+-+PhDr.+Mgr.+Bc.+Iveta+ADAM+psychoterapie+a+psychosoci%C3%A1ln%C3%AD+poradenstv%C3%AD+Recenze&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MTQ0NDMwMDM3NDEzsTA2szQw2sDI-IoxLiS1KLEgM1XBMSUxV0FXISDDpUhPwTcdSDgl6yl4lqWWJCo4ujj6KhQUVyZn5JdAlSdC-cX5yZmHF-bkHV6rUJBflJiSmldcUgbkBKUmp-ZVpS5ipbEFAAevClbcAAAA&rldimm=4111600671464836902&tbm=lcl&hl=cs-CZ&ved=2ahUKEwioo-eitu6TAxV5LRAIHa0NA4MQ9fQKegQIORAG#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="review-link">
+                Recenze na Google →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <span class="section-eyebrow">Služby</span>
+    <h2 class="section-title">S čím <em>vám mohu být</em> průvodkyní.</h2>
+    <p class="section-lead">Každý příběh je jiný. Společně najdeme tempo a směr, který bude dávat smysl právě vám.</p>
+
+    <div class="services-grid">
+      <div class="service">
+        <span class="service-num">— 01</span>
+        <h3>Individuální terapie</h3>
+        <p>Pro dospělé, kteří procházejí náročným obdobím, hledají sebe sama, nebo se chtějí lépe vyznat ve svých vztazích a emocích.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">— 02</span>
+        <h3>Párová terapie</h3>
+        <p>Prostor pro dvojici, která chce lépe porozumět jeden druhému, překonat krizi nebo nalézt společnou cestu vpřed.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">— 03</span>
+        <h3>Práce s rodinou</h3>
+        <p>Edukativní rodičovská terapie a podpora rodin v náhradní péči. Hledáme cesty, jak si rozumět napříč generacemi.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">— 04</span>
+        <h3>Krize a trauma</h3>
+        <p>Krizová intervence v situacích, kdy se země zachvěje pod nohama. Bezpečně, citlivě, vlastním tempem.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">— 05</span>
+        <h3>Transgenerační vzorce</h3>
+        <p>Práce se vzorci a tématy, která se v rodinách předávají napříč generacemi a často nás ovlivňují, aniž bychom o tom věděli.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">— 06</span>
+        <h3>Závislosti a recovery</h3>
+        <p>Podpora lidí, kteří se potýkají s návykovým chováním — vlastním nebo blízkého člověka. Bez moralizování.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pristup" class="approach">
+  <div class="wrap">
+    <span class="section-eyebrow">Můj přístup</span>
+    <h2 class="section-title">Adlerovská psychologie — člověk jako <em>celek a součást celku.</em></h2>
+    <p class="section-lead">Vycházím z přesvědčení, že každý člověk dává svému životu smysl skrze vztahy a sounáležitost. Mou rolí není radit, ale být vám oporou na cestě k vlastním odpovědím.</p>
+
+    <div class="approach-grid">
+      <div class="approach-item">
+        <h3>Bez soudů</h3>
+        <p>Do terapie přicházíte takoví, jací jste. Nemusíte nic předstírat ani „dobře vypadat". Bezpečí je základ všeho ostatního.</p>
+      </div>
+      <div class="approach-item">
+        <h3>Vaším tempem</h3>
+        <p>Žádný univerzální plán. Společně hledáme rytmus, který je udržitelný a respektuje, kde právě teď jste.</p>
+      </div>
+      <div class="approach-item">
+        <h3>Celistvý pohled</h3>
+        <p>Pracuji s vámi i s kontextem — vztahy, rodinou, příběhem. Nic z toho, co prožíváte, není „jen ve vaší hlavě".</p>
+      </div>
+      <div class="approach-item">
+        <h3>Etika a supervize</h3>
+        <p>Pravidelně využívám supervizi a řídím se etickým kodexem ČAP. Vaše důvěra je závazek, který beru vážně.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cenik" class="pricing">
+  <div class="wrap">
+    <span class="section-eyebrow">Ceník · platný od 1. dubna 2026</span>
+    <h2 class="section-title">Férové ceny, <em>žádná překvapení.</em></h2>
+    <p class="section-lead">Cena se odvíjí od času začátku terapie. Sezení trvá 50 minut (párová terapie 100 minut) a zahrnuje plnou pozornost, přípravu i následné poznámky.</p>
+
+    <div class="pricing-disclaimer">
+      Nepracuji v režimu zdravotnického zařízení a úhrad z veřejného zdravotního pojištění. Služby jsou poskytovány za přímou platbu (hotově, převodem — QR platba). Nejsem plátce DPH.
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <span class="price-name">Osobní i online terapie</span>
+        <p class="price-desc">50 minut · 1 osoba · osobně nebo online</p>
+        <div class="price-time-row">
+          <span class="price-time-label">do 15:30</span>
+          <span class="price-time-amount">1 000 <span>Kč</span></span>
+        </div>
+        <div class="price-time-row">
+          <span class="price-time-label">po 15:30</span>
+          <span class="price-time-amount">1 200 <span>Kč</span></span>
+        </div>
+        <div class="price-time-row">
+          <span class="price-time-label">víkendy a svátky</span>
+          <span class="price-time-amount">1 500 <span>Kč</span></span>
+        </div>
+        <p class="price-meta">Cena se určuje podle času začátku terapie.</p>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-badge">Nejvýhodnější</span>
+        <span class="price-name">Zvýhodněné předplatné</span>
+        <p class="price-desc">Balíček 6 sezení (5 + 1 zdarma) · čas do 15:30</p>
+        <div class="price-time-row">
+          <span class="price-time-label">Cena balíčku</span>
+          <span class="price-time-amount">5 000 <span>Kč</span></span>
+        </div>
+        <ul class="price-features" style="margin-top:18px">
+          <li>Šesté sezení zdarma</li>
+          <li>Pevně rezervovaný čas</li>
+          <li>Možnost rozložit v čase</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <span class="price-name">Párová terapie</span>
+        <p class="price-desc">100 minut · 2 osoby · osobní setkání</p>
+        <div class="price-time-row">
+          <span class="price-time-label">do 15:30</span>
+          <span class="price-time-amount">2 000 <span>Kč</span></span>
+        </div>
+        <div class="price-time-row">
+          <span class="price-time-label">po 15:30</span>
+          <span class="price-time-amount">2 500 <span>Kč</span></span>
+        </div>
+        <div class="price-time-row">
+          <span class="price-time-label">víkendy a svátky</span>
+          <span class="price-time-amount">3 000 <span>Kč</span></span>
+        </div>
+        <p class="price-meta">Párová sezení probíhají vždy osobně.</p>
+      </div>
+
+    </div>
+
+    <p class="price-note">Storno zdarma 24 hodin předem. Pozdější zrušení se hradí v plné výši.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="section-eyebrow">Časté dotazy</span>
+    <h2 class="section-title">Co vás možná <em>zajímá předem.</em></h2>
+    <p class="section-lead">Pokud tu nenajdete odpověď na svou otázku, klidně mi napište nebo zavolejte.</p>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Jak probíhá první setkání?</summary>
+        <div class="faq-answer">První sezení je seznamovací. Povíte mi, s čím přicházíte a co byste si přáli, aby se ve vašem životě změnilo. Já vám představím způsob, jakým pracuji, a společně se rozhodneme, jestli vám můj přístup vyhovuje. Není to závazek pokračovat — je to prostor zjistit, zda si "sedneme".</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kolik sezení budu potřebovat?</summary>
+        <div class="faq-answer">Záleží na tom, s čím přicházíte. Některá témata se otevírají za pár setkání, jiná potřebují měsíce. Po několika sezeních se obvykle ujasní, jakou cestu spolu půjdeme. Délka i frekvence jsou vždy věcí dohody — vy rozhodujete o tom, kdy je čas pokračovat nebo ukončit.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Je terapie hrazená pojišťovnou?</summary>
+        <div class="faq-answer">Moje soukromá praxe není hrazená ze zdravotního pojištění. Některé pojišťovny nabízejí příspěvek na psychoterapii v rámci preventivních programů — vyplatí se ověřit u vaší pojišťovny.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Můžu přijít online?</summary>
+        <div class="faq-answer">Ano. Online sezení vedu přes Google Meet a po obsahové stránce jsou stejnocenná osobnímu setkání. Pro některé typy práce (krize, traumata) ale doporučuji aspoň první setkání naživo.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Je všechno, co řeknu, důvěrné?</summary>
+        <div class="faq-answer">Ano. Vážu se mlčenlivostí podle etického kodexu České asociace pro psychoterapii. Z výjimek hovoříme pouze o situacích, kdy je ohrožen váš život nebo život někoho jiného. Pravidelně využívám supervizi, ale i tam jsou všechny případy anonymizované.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jaký je rozdíl mezi psychologem, psychoterapeutem a psychiatrem?</summary>
+        <div class="faq-answer">Psychiatr je lékař a může předepisovat léky. Psycholog má vystudovanou psychologii a může diagnostikovat. Psychoterapeut má za sebou několikaletý akreditovaný psychoterapeutický výcvik a věnuje se terapeutické práci. Já jsem psychoterapeutka — léky nepředepisuji, ale ráda vám pomohu zorientovat se, pokud byste potřebovali také lékařskou pomoc.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Co když si nebudu vědět rady, co říct?</summary>
+        <div class="faq-answer">To je úplně v pořádku a stává se to mnohem častěji, než si myslíte. Není potřeba nic připravovat ani si dělat poznámky. Vždycky je z čeho začít a já vás v tom nenechám.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" class="booking">
+  <div class="wrap">
+    <span class="section-eyebrow">Objednání</span>
+    <h2 class="section-title">První krok je <em>často ten nejtěžší.</em></h2>
+    <p class="section-lead">Vyberte si termín v kalendáři. Ozvu se vám zpravidla do 24 hodin s potvrzením a platebními instrukcemi.</p>
+
+    <div class="booking-grid">
+      <div class="booking-info">
+        <h3>Jak to bude probíhat</h3>
+        <ol class="booking-steps">
+          <li><strong>Vyberete termín</strong>Zvolte volný čas v kalendáři a vyplňte krátký dotazník.</li>
+          <li><strong>Ozvu se vám zpět</strong>Do 24 hodin (v pracovní dny) potvrdím termín a pošlu platební instrukce.</li>
+          <li><strong>První setkání</strong>Přijdete buď osobně do Ostravy, nebo se připojíme online.</li>
+          <li><strong>Společně rozhodneme</strong>Po prvním sezení se domluvíme, jak dál — bez tlaku, bez závazků.</li>
+        </ol>
+        <div class="room-photo">
+          <img src="assets/terapeutovna.jpg" alt="Terapeutovna — Ostrava, Chocholouškova"
+               onerror="this.parentElement.style.display='none'">
+          <span class="room-photo-caption">Terapeutovna · Ostrava, Chocholouškova</span>
+        </div>
+      </div>
+
+      <div class="booking-form">
+        <p class="booking-note">
+          Termíny jsou dostupné od <strong>května 2026</strong> — čtvrtky a pátky,
+          v celé hodiny od 8:00 do 17:00. Po potvrzení termínu obdržíte platební instrukce e-mailem.
+        </p>
+        <!-- Cal.com inline embed -->
+        <!--
+          === NASTAVENÍ V CAL.COM (backend — nutno provést na cal.com/availability) ===
+          - Dostupné dny: jen čtvrtek a pátek
+          - Časy: 8:00 — 17:00 (v celé hodiny, poslední začátek terapie 17:00)
+          - Duben 2026: označit jako nedostupný (Date override → block April 2026)
+          - Platby: vypnout QR / platební požadavek — Iveta posílá instrukce ručně s potvrzením
+          - Username: iveta-adam
+        -->
+        <div style="width:100%;height:680px;overflow:scroll" id="my-cal-inline"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:80px;padding-top:50px;border-top:1px solid #d8cfa8;display:grid;grid-template-columns:repeat(4,1fr);gap:40px" class="contact-info-bottom">
+      <div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#2f7a4f;margin-bottom:10px">Telefon</div>
+        <a href="tel:+420608182303" style="font-size:17px;color:var(--ink)">+420 608 182 303</a>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#2f7a4f;margin-bottom:10px">E-mail</div>
+        <a href="mailto:terapie-adam@email.cz" style="font-size:17px;color:var(--ink);word-break:break-all">terapie-adam@email.cz</a>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#2f7a4f;margin-bottom:10px">Kde mě najdete</div>
+        <div style="font-size:15px;color:var(--ink-soft)">Chocholouškova 1578/4<br>702 00 Ostrava<br><span style="font-size:13px;opacity:0.7">GPS: 49.82870, 18.26490</span></div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#2f7a4f;margin-bottom:10px">Sociální sítě</div>
+        <a href="https://www.facebook.com/IvetaADAMrecoveryTerapeut" target="_blank" rel="noopener" style="font-size:17px;color:var(--ink)">Facebook →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-logo"><img src="assets/logo.png" alt="Terapie Adam"></div>
+    <p>© 2026 Iveta — Terapie ADAM · Psychoterapie a psychosociální poradenství · Členka České asociace pro psychoterapii</p>
+  </div>
+</footer>
+
+<!-- Cal.com inline embed snippet -->
+<script type="text/javascript">
+  // === CAL.COM REZERVAČNÍ SYSTÉM ===
+  // Username: iveta-adam
+  // Aktuální nastavení: zobrazí konkrétní event type (úvodní konzultace)
+  //
+  // DŮLEŽITÉ — nastavit v Cal.com backendu (cal.com/availability):
+  //   1. Dostupné dny: jen ČTVRTEK a PÁTEK
+  //   2. Dostupné časy: 8:00–17:00 v celé hodiny (slot 60 min, poslední začátek 17:00)
+  //   3. Duben 2026: zablokovat jako nedostupný (Date overrides → block duben)
+  //   4. Platby: žádný platební požadavek online — Iveta posílá QR platbu ručně s potvrzením
+  //
+  // Event types na Cal.com:
+  //   - iveta-adam/uvodni-konzultace  (50 min, auto-confirm)
+  //   - iveta-adam/terapie            (50 min, requires confirmation)
+  //   - iveta-adam/parova-terapie     (100 min, requires confirmation)
+  //   - iveta-adam/online-terapie     (50 min, requires confirmation)
+  //
+  // Více info: https://cal.com/docs/embeds
+
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", "terapie", { origin: "https://cal.com" });
+
+  Cal.ns.terapie("inline", {
+    elementOrSelector: "#my-cal-inline",
+    config: { layout: "month_view", theme: "light" },
+    calLink: "iveta-adam/uvodni-konzultace",
+  });
+
+  Cal.ns.terapie("ui", {
+    cssVarsPerTheme: {
+      light: { "cal-brand": "#2f7a4f" }
+    },
+    hideEventTypeDetails: false,
+    layout: "month_view"
+  });
+
+</script>
+
+</body>
+</html>
